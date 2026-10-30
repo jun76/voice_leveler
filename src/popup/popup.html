@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Voice Leveler</title>
+    <link rel="stylesheet" href="./popup.css">
+  </head>
+  <body>
+    <main class="panel">
+      <header class="header">
+        <div>
+          <h1>Voice Leveler</h1>
+          <p id="site" class="site">対象タブを確認中</p>
+        </div>
+        <span id="status" class="status">停止中</span>
+      </header>
+
+      <button id="toggle" class="toggle" type="button">処理を開始</button>
+      <p id="error" class="error" hidden></p>
+
+      <section class="meters" aria-label="音声メーター">
+        <div class="meter-row"><span>入力</span><strong id="input-meter">-60 dB</strong></div>
+        <div class="meter-row"><span>話し声</span><strong id="speech-meter">未検出</strong></div>
+        <div class="meter-row"><span>補正</span><strong id="gain-meter">0.0 dB</strong></div>
+        <div class="meter-bar"><span id="speech-bar"></span></div>
+      </section>
+
+      <section class="controls">
+        <label>
+          補正強度
+          <output id="strength-value">72%</output>
+          <input id="strength" type="range" min="0" max="1" step="0.01" value="0.72">
+        </label>
+        <label>
+          話し声判定の感度
+          <output id="sensitivity-value">8 dB</output>
+          <input id="sensitivity" type="range" min="3" max="18" step="1" value="8">
+        </label>
+        <label>
+          最大増幅
+          <output id="boost-value">12 dB</output>
+          <input id="boost" type="range" min="0" max="18" step="1" value="12">
+        </label>
+        <label>
+          最大減衰
+          <output id="cut-value">12 dB</output>
+          <input id="cut" type="range" min="0" max="18" step="1" value="12">
+        </label>
+        <label class="check-label">
+          <span>BGM抑制</span>
+          <input id="bgm-suppression" type="checkbox">
+        </label>
+      </section>
+
+      <p class="note">音声はこのブラウザ内で処理し、外部へ送信しません。</p>
+    </main>
+    <script type="module" src="./popup.js"></script>
+  </body>
+</html>

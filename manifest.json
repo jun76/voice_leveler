@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Voice Leveler",
+  "description": "トーク配信の話し声を基準に再生音量を滑らかに調整します。",
+  "version": "0.1.0",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "activeTab",
+    "offscreen",
+    "storage",
+    "tabCapture"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Voice Leveler",
+    "default_popup": "src/popup/popup.html"
+  }
+}
